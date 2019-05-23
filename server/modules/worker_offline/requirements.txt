@@ -1,0 +1,6 @@
+# Default requirement worker
+
+ws4py
+configparser
+tenacity
+pydub

@@ -1,0 +1,3 @@
+ws4py
+configparser
+tornado

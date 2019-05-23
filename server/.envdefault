@@ -1,0 +1,8 @@
+AM_PATH=/path/to/acoustic/model/folder
+LM_PATH=/path/to/language/model/folder
+MODEL_CONFIG=./modules/worker_offline/worker.config
+OFFLINE_PORT=8888
+ 
+SWAGGER_PATH=./document
+SWAGGER_JSON=/app/swagger/swagger.yml
+

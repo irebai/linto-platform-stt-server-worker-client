@@ -1,0 +1,11 @@
+Dockerfile
+docker-compose.yml
+docker-optional-service.yml
+modules/worker_offline
+modules/client
+tests
+document
+.env
+.gitignore
+.dockerignore
+

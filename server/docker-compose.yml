@@ -1,0 +1,41 @@
+version: '3.2'
+
+services:
+
+  stt-worker:
+    container_name: stt-worker
+    build: modules/worker_offline/
+    image: lintoai/linto-platform-stt-worker-client
+    depends_on:
+      - stt-server
+    volumes:
+      - ${AM_PATH}:/opt/models/AM
+      - ${LM_PATH}:/opt/models/LM
+      - ${MODEL_CONFIG}:/opt/worker.config
+    env_file: .env
+    environment:
+      - OFFLINE_PORT
+
+  stt-server:
+    container_name: stt-server
+    build: .
+    image: lintoai/linto-platform-stt-server
+    hostname: stt-server
+    env_file: .env
+    environment:
+      - OFFLINE_PORT
+    ports:
+      - ${OFFLINE_PORT}:${OFFLINE_PORT}
+
+  swaggerui:
+    container_name: stt-swagger
+    image: swaggerapi/swagger-ui
+    hostname: swaggerui
+    ports:
+      - 80:8080
+    volumes:
+      - ${SWAGGER_PATH}:/app/swagger/
+    env_file: .env
+    environment:
+      - SWAGGER_JSON
+
