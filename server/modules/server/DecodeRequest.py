@@ -103,7 +103,7 @@ class DecodeRequestHandler(tornado.web.RequestHandler):
         self.set_status(200, "Worker has completed successfully")
         self.set_header("Content-Type", "application/json")
         self.set_header("Access-Control-Allow-Origin", "*")
-        self.write({self.request.method: message})
+        self.write({'transcript': message})
         self.application.num_requests_processed += 1
         self.waitResponse.notify()
 
